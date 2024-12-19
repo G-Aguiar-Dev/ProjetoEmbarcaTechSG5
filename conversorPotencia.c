@@ -18,7 +18,7 @@ double converterDeWatts(int opcaoSaida, double valor) {
         default:
             return valor;
     }
-} 
+}
 
 double converterDeQuilowatts(int opcaoSaida, double valor) {
     switch (opcaoSaida) {
@@ -59,4 +59,21 @@ int main() {
     printf("Digite a unidade de saída: ");
     scanf("%d", &opcaoSaida);
 
+    switch (opcaoEntrada) {
+        case 1:
+            valorConvertido = converterDeWatts(opcaoSaida, valorEntrada);
+            break;
+        case 2:
+            valorConvertido = converterDeQuilowatts(opcaoSaida, valorEntrada);
+            break;
+        case 3:
+            valorConvertido = converterDeCavalosVapor(opcaoSaida, valorEntrada);
+            break;
+        default:
+            printf("Opção de entrada inválida!\n");
+            return 1;
+    }
+
+    printf("\nResultado: %.2lf\n", valorConvertido);
+    return 0;
 }
