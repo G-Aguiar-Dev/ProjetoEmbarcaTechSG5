@@ -1,4 +1,4 @@
-//Conversor de Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp)
+//Conversor de Watts (W), quilowatts (kW), cavalos-vapor (cv)
 //Autora: Maria Eduarda Pamponet Ramalho
 
 #include <stdio.h>
@@ -6,7 +6,7 @@
 void exibirMenu() {
     printf("1 - Watts (W)\n");
     printf("2 - Quilowatts (kW)\n");
-    printf("3 - Cavalos-vapor (cv ou hp)\n");
+    printf("3 - Cavalos-vapor (cv)\n");
 }
 
 double converterDeWatts(int opcaoSaida, double valor) {
