@@ -9,6 +9,17 @@ void exibirMenu() {
     printf("3 - Cavalos-vapor (cv ou hp)\n");
 }
 
+double converterDeWatts(int opcaoSaida, double valor) {
+    switch (opcaoSaida) {
+        case 2: // Watts para Quilowatts
+            return valor / 1000;
+        case 3: // Watts para Cavalos-vapor
+            return valor / 735.5;
+        default:
+            return valor;
+    }
+} 
+
 int main() {
     int opcaoEntrada, opcaoSaida;
     double valorEntrada, valorConvertido;
