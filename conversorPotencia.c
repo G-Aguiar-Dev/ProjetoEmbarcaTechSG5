@@ -31,6 +31,17 @@ double converterDeQuilowatts(int opcaoSaida, double valor) {
     }
 }
 
+double converterDeCavalosVapor(int opcaoSaida, double valor) {
+    switch (opcaoSaida) {
+        case 1: // Cavalos-vapor para Watts
+            return valor * 735.5;
+        case 2: // Cavalos-vapor para Quilowatts
+            return valor * 735.5 / 1000;
+        default:
+            return valor;
+    }
+}
+
 int main() {
     int opcaoEntrada, opcaoSaida;
     double valorEntrada, valorConvertido;
