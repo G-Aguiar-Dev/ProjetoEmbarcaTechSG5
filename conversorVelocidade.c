@@ -8,7 +8,7 @@ void converterKmhParaMph(); //Função para converter km/h para mph
 void converterMphParaMs(); //Função para converter mph para m/s
 void converterMphParaKmH(); //Função para converter mph para km/h
 
-int main(){
+int conversorVelocidade(){
     int opcao; //Variável que armazena a escolha do usuário no menu
 
     //Laço para manter o menu ativo até que o usuário saia ou escolha uma opção válida

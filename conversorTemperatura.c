@@ -29,7 +29,7 @@ switch (medida){
     }
 return temperatura;
 } 
-int main() {
+int conversorTemperatura() {
     int parametroConversao;
     float temperatura, resultado;
     printf("Determine os parametros de conversao:\n");

@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-int conversorDeMassa(){
+int conversorMassa(){
     
     int op;
     double converter, resultado1, resultado2;

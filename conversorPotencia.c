@@ -42,7 +42,7 @@ double converterDeCavalosVapor(int opcaoSaida, double valor) {
     }
 }
 
-int main() {
+int conversorPotencia() {
     int opcaoEntrada, opcaoSaida;
     double valorEntrada, valorConvertido;
 

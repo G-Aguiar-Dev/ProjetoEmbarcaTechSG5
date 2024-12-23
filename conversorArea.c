@@ -11,7 +11,7 @@ convertida.
 #include <stdio.h>
 #include <string.h>
 
-void converterArea() {
+void conversorArea() {
     float valor, resultado;
     char medida_atual[10], medida_convertida[10];   //para guardar as strings (cm2,m2,km2)
     float fator_conversao = 1.0;                    //declara e inicia a variável                 
