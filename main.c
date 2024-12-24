@@ -75,14 +75,14 @@ void conversorArea() {
 
     
     //Interface com o usuário
-    printf("=== Conversor de Áreas ===\n");
-    printf("Unidades disponíveis: cm2, m2, km2\n");
+    printf("=== Conversor de Areas ===\n");
+    printf("Unidades disponiveis: cm2, m2, km2\n");
     
-    printf("Digite o valor da área: ");
+    printf("Digite o valor da area: ");
     scanf("%f", &valor);
     printf("Digite a unidade atual (cm2, m2, km2): ");
     scanf("%s", medida_atual);
-    printf("Digite a unidade para conversão (cm2, m2, km2): ");
+    printf("Digite a unidade para conversao (cm2, m2, km2): ");
     scanf("%s", medida_convertida);
 
     // Determina o fator de conversão
@@ -101,7 +101,7 @@ void conversorArea() {
     } else if (strcmp(medida_atual, medida_convertida) == 0) {
         fator_conversao = 1.0; // Sem conversão necessária
     } else {
-        printf("Unidades inválidas ou não suportadas!\n");
+        printf("Unidades invalidas ou nao suportadas!\n");
         return;
     }
 
@@ -109,7 +109,7 @@ void conversorArea() {
     resultado = valor * fator_conversao;
 
     // Exibe o resultado
-    printf("\n=== Resultado da Conversão ===\n");
+    printf("\n=== Resultado da Conversao ===\n");
     printf("%.2f %s equivalem a %.8f %s\n", valor, medida_atual, resultado, medida_convertida);
 }
 
@@ -365,12 +365,10 @@ void conversorMassa(){
     int op;
     double converter, resultado1, resultado2;
 
-    do{
     printf("Escolha a unidade de medida que deseja converter:\n");
     printf("1 - Grama\n");
     printf("2 - Quilograma\n");
     printf("3 - Tonelada\n");
-    printf("4 - Sair\n");
     scanf("%d", &op);
 
     
@@ -403,18 +401,10 @@ void conversorMassa(){
     printf("| %.2lfT = %.2lfKg = %.2lfg | \n", converter, resultado1, resultado2);
         break;
 
-    case 4:
-    printf("Digite o valor a ser convertido\n");
-    scanf("%lf", &converter);
-    //Mensagem de saída e encerramento do programa
-    printf("Saindo...\n");
-    break;
-
     default: 
     //Caso o usuário insira uma opção inválida
     printf("Opcao invalida!\n\n");
     }
-    }while(op != 4);
 }
 
 //CONVERSOR DE POTÊNCIA
@@ -461,13 +451,13 @@ void conversorPotencia() {
     int opcaoEntrada, opcaoSaida;
     double valorEntrada, valorConvertido;
 
-    printf("Bem-vindo ao Conversor de Potência!\n\n");
+    printf("Bem-vindo ao Conversor de Potencia!\n\n");
     exibirMenu();
     printf("Digite a unidade de entrada: ");
     scanf("%d", &opcaoEntrada);
     if (opcaoEntrada < 1 || opcaoEntrada > 3)
     {
-        printf("Opção de entrada inválida!\n");
+        printf("Opção de entrada invalida!\n");
         return;
     }
     
@@ -475,9 +465,9 @@ void conversorPotencia() {
     printf("Digite o valor: ");
     scanf("%lf", &valorEntrada);
 
-    printf("\nSelecione a unidade de saída:\n");
+    printf("\nSelecione a unidade de saida:\n");
     exibirMenu();
-    printf("Digite a unidade de saída: ");
+    printf("Digite a unidade de saida: ");
     scanf("%d", &opcaoSaida);
 
     switch (opcaoEntrada) {
@@ -491,7 +481,7 @@ void conversorPotencia() {
             valorConvertido = converterDeCavalosVapor(opcaoSaida, valorEntrada);
             break;
         default:
-            printf("Opção de entrada inválida!\n");
+            printf("Opção de entrada invalida!\n");
             return;
     }
 
@@ -520,10 +510,6 @@ switch (medida){
     case 6 : //Kelvin para Fahrenheit
         temperatura = (temperatura - 273.15) * 9/5 + 32;
     break;
-    case 7: 
-    //Mensagem de saída e encerramento do programa
-    printf("Saindo...\n");
-    break;
     default: 
     //Caso o usuário insira uma opção inválida
     printf("Opcao invalida!\n\n");
@@ -535,7 +521,6 @@ void conversorTemperatura() {
     int parametroConversao;
     float temperatura, resultado;
 
-    do{
     printf("Determine os parametros de conversao:\n");
     printf("1 - Celsius para Fahrenheit\n");
     printf("2 - Celsius para Kelvin\n");
@@ -543,7 +528,6 @@ void conversorTemperatura() {
     printf("4 - Fahrenheit para Kelvin\n");
     printf("5 - Kelvin para Celsius\n");
     printf("6 - Kelvin para Fahrenheit\n");
-    printf("7 - Sair\n");
     scanf("%d", &parametroConversao);
     printf("Digite a temperatura:\n");
     scanf("%f", &temperatura);
@@ -554,7 +538,6 @@ void conversorTemperatura() {
     }else{
         printf("parametro de conversao invalido.\n");
     }
-    }while(resultado != 7);
 }
 
 //CONVERSOR DE TEMPO
@@ -570,14 +553,12 @@ void conversorTempo() {
 double valor;
 int opcao;
 
-do{
 printf("Escolha 1 para converter horas em minutos.\n");
 printf("Escolha 2 para converter minutos em segundos.\n");
 printf("Escolha 3 para converter segundos em minutos.\n");
 printf("Escolha 4 para converter minutos em horas.\n");
 printf("Escolha 5 para converter horas em segundos.\n");
 printf("Escolha 6 para converter segundos em horas.\n");
-printf("Escolha 7 para Sair\n");
 scanf("%d", &opcao);
 
 switch(opcao) {
@@ -617,18 +598,12 @@ switch(opcao) {
     scanf("%lf", &valor);
     printf("%.2lf segundos = %.2lf horas\n", valor, segundosParaHoras(valor));
     break;
-
-    case 7: 
-    //Mensagem de saída e encerramento do programa
-    printf("Saindo...\n");
-    break;
         
     default: 
     //Caso o usuário insira uma opção inválida
     printf("Opcao invalida!\n\n");
        
     }
-    }while(opcao != 7);
 }
 
 //CONVERSOR DE VELOCIDADE
@@ -642,8 +617,6 @@ void converterMphParaKmH(); //Função para converter mph para km/h
 void conversorVelocidade(){
     int opcao; //Variável que armazena a escolha do usuário no menu
 
-    //Laço para manter o menu ativo até que o usuário saia ou escolha uma opção válida
-    do{
     //Exibe o menu principal do programa
     printf("==== Conversor de Velocidade ====\n");
     printf("1 - Converter de m/s para km/h\n"); //Opção 1: Converter de m/s para km/h
@@ -652,7 +625,6 @@ void conversorVelocidade(){
     printf("4 - Converter de km/h para mph\n"); //Opção 4: Converter de km/h para mph
     printf("5 - Converter de mph para m/s\n");  //Opção 5: Converter de mph para m/s
     printf("6 - Converter de mph para km/h\n"); //Opção 6: Converter de mph para km/h
-    printf("7 - Sair\n"); //Opção 7: Sair do programa
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao); //Lê a opção escolhida pelo usuário
 
@@ -682,16 +654,11 @@ void conversorVelocidade(){
             //Chama a função para converter de mph para km/h
             converterMphParaKmH();
             break;
-        case 7: 
-            //Mensagem de saída e encerramento do programa
-            printf("Saindo...\n");
-            break;
         default: 
             //Caso o usuário insira uma opção inválida
             printf("Opcao invalida!\n\n");
 
     }
-    }while(opcao!=7);   //Repete até o usuário escolher a opção 7 (Sair)
 }
 
 //Função para converter de metros por segundo (m/s) para quilômetros por hora (km/h)
