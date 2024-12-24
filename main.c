@@ -303,7 +303,6 @@ void conversorBits(){
                 break;
             case 4:
                 resultado = valor * 1024;
-                resultado = valor / 1024;
                 break;
             case 5:
                 resultado = valor;
@@ -353,7 +352,7 @@ void conversorBits(){
                 break;
     }
         break;
-}
+    }
     
     printf("O valor convertido eh: %.4f\n", resultado);
 }
@@ -371,13 +370,12 @@ void conversorMassa(){
     printf("4 - Sair\n");
     scanf("%d", &op);
 
-    printf("Digite o valor a ser convertido\n");
-    scanf("%lf", &converter);
-
     
     switch(op){
 
     case 1: 
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     resultado1 = converter / 1000; // g -> kg
     resultado2 = converter / 1000000; // g -> T
     printf("O resultado convertido de grama para quilograma e tonelada eh:\n");
@@ -385,6 +383,8 @@ void conversorMassa(){
         break;
 
     case 2:
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     resultado1 = converter * 1000; // kg -> g
     resultado2 = converter / 1000; // kg -> T
     printf("O resultado convertido de quilograma para grama e tonelada eh:\n");
@@ -392,13 +392,17 @@ void conversorMassa(){
         break;
 
     case 3:
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     resultado1 = converter * 1000; // T -> kg
     resultado2 = converter * 1000000; // T -> g
     printf("O resultado convertido de tonelada para quilograma e grama eh:\n");
     printf("| %.2lfT = %.2lfKg = %.2lfg | \n", converter, resultado1, resultado2);
         break;
 
-    case 4: 
+    case 4:
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     //Mensagem de saída e encerramento do programa
     printf("Saindo...\n");
     break;
