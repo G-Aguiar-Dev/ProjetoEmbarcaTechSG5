@@ -13,7 +13,7 @@ void conversorVelocidade();
 int main() {
     int escolha;
 
-    while (escolha == 0) {
+    do {
         printf("\n========== MENU ==========\n");
         printf("1. CONVERSOR AREA\n");
         printf("2. CONVERSOR BITS\n");
@@ -62,7 +62,7 @@ int main() {
             default:
                 printf("\nOpcao invalida. Por favor, tente novamente.\n");
         }
-    }
+    } while (escolha != 0);
 
     return 0;
 }
