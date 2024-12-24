@@ -67,6 +67,7 @@ int main() {
     return 0;
 }
 
+// CONVERSOR DE ÁREA
 void conversorArea() {
     float valor, resultado;
     char medida_atual[10], medida_convertida[10];   //para guardar as strings (cm2,m2,km2)
@@ -112,6 +113,7 @@ void conversorArea() {
     printf("%.2f %s equivalem a %.8f %s\n", valor, medida_atual, resultado, medida_convertida);
 }
 
+//CONVERSOR DE BITS
 void conversorBits(){
     int opcaoBase, opcaoConversao;
     float valor;
@@ -357,6 +359,7 @@ void conversorBits(){
     printf("O valor convertido eh: %.4f\n", resultado);
 }
 
+//CONVERSOR DE MASSA
 void conversorMassa(){
     
     int op;
@@ -414,6 +417,7 @@ void conversorMassa(){
     }while(op != 4);
 }
 
+//CONVERSOR DE POTÊNCIA
 void exibirMenu() {
     printf("1 - Watts (W)\n");
     printf("2 - Quilowatts (kW)\n");
@@ -461,6 +465,12 @@ void conversorPotencia() {
     exibirMenu();
     printf("Digite a unidade de entrada: ");
     scanf("%d", &opcaoEntrada);
+    if (opcaoEntrada < 1 || opcaoEntrada > 3)
+    {
+        printf("Opção de entrada inválida!\n");
+        return;
+    }
+    
 
     printf("Digite o valor: ");
     scanf("%lf", &valorEntrada);
@@ -488,6 +498,7 @@ void conversorPotencia() {
     printf("\nResultado: %.2lf\n", valorConvertido);
 }
 
+//CONVERSOR DE TEMPERATURA
 float converterTemperatura(int medida, float temperatura){
 
 switch (medida){
@@ -546,6 +557,7 @@ void conversorTemperatura() {
     }while(resultado != 7);
 }
 
+//CONVERSOR DE TEMPO
 double horasParaMinutos (double horas) { return horas * 60; }
 double minutosParaSegundos (double minutos) { return minutos * 60; }
 double segundosParaMinutos (double segundos) { return segundos / 60; }
@@ -619,7 +631,7 @@ switch(opcao) {
     }while(opcao != 7);
 }
 
-
+//CONVERSOR DE VELOCIDADE
 void converterMsParaKmH(); //Função para converter m/s para km/h
 void converterKmhParaMs();  //Função para converter km/h para m/s
 void converterMsParaMph(); //Função para converter m/s para mph
