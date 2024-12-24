@@ -117,6 +117,7 @@ void conversorBits(){
     float valor;
     float resultado;
     
+
     printf("Escolha de que unidade de medida que deseja converter:\n");  //Menu de opções de conversão - Unidade Base
     printf("1 - Bits\n");
     printf("2 - Bytes\n");
@@ -137,25 +138,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
                 resultado = valor;
                 break;
             case 2:
-                resultado = valor * 8;
+                resultado = valor / 8;
                 break;
             case 3:
-                resultado = valor * 8 * 1024;
+                resultado = valor / 8 / 1024;
                 break;
             case 4:
-                resultado = valor * 8 * 1024 * 1024;
+                resultado = valor / 8 / 1024 / 1024;
                 break;
             case 5:
-                resultado = valor * 8 * 1024 * 1024 * 1024;
+                resultado = valor / 8 / 1024 / 1024 / 1024;
                 break;
             case 6:
-                resultado = valor * 8 * 1024 * 1024 * 1024 * 1024;
+                resultado = valor / 8 / 1024 / 1024 / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -176,25 +178,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8;
+                resultado = valor * 8;
                 break;
             case 2:
                 resultado = valor;
                 break;
             case 3:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             case 4:
-                resultado = valor * 1024 * 1024;
+                resultado = valor / 1024 / 1024;
                 break;
             case 5:
-                resultado = valor * 1024 * 1024 * 1024;
+                resultado = valor / 1024 / 1024 / 1024;
                 break;
             case 6:
-                resultado = valor * 1024 * 1024 * 1024 * 1024;
+                resultado = valor / 1024 / 1024 / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -212,25 +215,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024;
+                resultado = valor * 8 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 3:
                 resultado = valor;
                 break;
             case 4:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             case 5:
-                resultado = valor * 1024 * 1024;
+                resultado = valor / 1024 / 1024;
                 break;
             case 6:
-                resultado = valor * 1024 * 1024 * 1024;
+                resultado = valor / 1024 / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -248,25 +252,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024 / 1024;
+                resultado = valor * 8 * 1024 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024 / 1024;
+                resultado = valor * 1024 * 1024;
                 break;
             case 3:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 4:
                 resultado = valor;
                 break;
             case 5:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             case 6:
-                resultado = valor * 1024 * 1024;
+                resultado = valor / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -284,25 +289,27 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024 / 1024 / 1024;
+                resultado = valor * 8 * 1024 * 1024 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024 / 1024 / 1024;
+                resultado = valor * 1024 * 1024 * 1024;
                 break;
             case 3:
-                resultado = valor / 1024 / 1024;
+                resultado = valor * 1024 * 1024;
                 break;
             case 4:
+                resultado = valor * 1024;
                 resultado = valor / 1024;
                 break;
             case 5:
                 resultado = valor;
                 break;
             case 6:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -320,22 +327,23 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024 / 1024 / 1024 / 1024;
+                resultado = valor * 8 * 1024 * 1024 * 1024 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024 / 1024 / 1024 / 1024;
+                resultado = valor * 1024 * 1024 * 1024 * 1024;
                 break;
             case 3:
-                resultado = valor / 1024 / 1024 / 1024;
+                resultado = valor * 1024 * 1024 * 1024;
                 break;
             case 4:
-                resultado = valor / 1024 / 1024;
+                resultado = valor * 1024 * 1024;
                 break;
             case 5:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 6:
                 resultado = valor;
@@ -344,8 +352,10 @@ void conversorBits(){
                 printf("Opcao invalida\n");
                 break;
     }
-    printf("O valor convertido eh: %.2f\n", resultado);
+        break;
 }
+    
+    printf("O valor convertido eh: %.4f\n", resultado);
 }
 
 void conversorMassa(){
