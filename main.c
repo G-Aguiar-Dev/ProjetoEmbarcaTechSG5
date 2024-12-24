@@ -117,7 +117,6 @@ void conversorBits(){
     float valor;
     float resultado;
     
-
     printf("Escolha de que unidade de medida que deseja converter:\n");  //Menu de opções de conversão - Unidade Base
     printf("1 - Bits\n");
     printf("2 - Bytes\n");
@@ -345,26 +344,27 @@ void conversorBits(){
                 printf("Opcao invalida\n");
                 break;
     }
-        break;
-    }
-    
     printf("O valor convertido eh: %.2f\n", resultado);
+}
 }
 
 void conversorMassa(){
     
     int op;
     double converter, resultado1, resultado2;
-    
+
+    do{
     printf("Escolha a unidade de medida que deseja converter:\n");
     printf("1 - Grama\n");
     printf("2 - Quilograma\n");
     printf("3 - Tonelada\n");
+    printf("4 - Sair\n");
     scanf("%d", &op);
 
     printf("Digite o valor a ser convertido\n");
     scanf("%lf", &converter);
 
+    
     switch(op){
 
     case 1: 
@@ -388,11 +388,16 @@ void conversorMassa(){
     printf("| %.2lfT = %.2lfKg = %.2lfg | \n", converter, resultado1, resultado2);
         break;
 
-    default:
-    printf("Opcao invalida\n");
-        break;
-    }
+    case 4: 
+    //Mensagem de saída e encerramento do programa
+    printf("Saindo...\n");
+    break;
 
+    default: 
+    //Caso o usuário insira uma opção inválida
+    printf("Opcao invalida!\n\n");
+    }
+    }while(op != 4);
 }
 
 void exibirMenu() {
@@ -490,8 +495,13 @@ switch (medida){
     case 6 : //Kelvin para Fahrenheit
         temperatura = (temperatura - 273.15) * 9/5 + 32;
     break;
-    default:
-        return 0;
+    case 7: 
+    //Mensagem de saída e encerramento do programa
+    printf("Saindo...\n");
+    break;
+    default: 
+    //Caso o usuário insira uma opção inválida
+    printf("Opcao invalida!\n\n");
     }
 return temperatura;
 }
@@ -499,6 +509,8 @@ return temperatura;
 void conversorTemperatura() {
     int parametroConversao;
     float temperatura, resultado;
+
+    do{
     printf("Determine os parametros de conversao:\n");
     printf("1 - Celsius para Fahrenheit\n");
     printf("2 - Celsius para Kelvin\n");
@@ -506,16 +518,18 @@ void conversorTemperatura() {
     printf("4 - Fahrenheit para Kelvin\n");
     printf("5 - Kelvin para Celsius\n");
     printf("6 - Kelvin para Fahrenheit\n");
+    printf("7 - Sair\n");
     scanf("%d", &parametroConversao);
     printf("Digite a temperatura:\n");
     scanf("%f", &temperatura);
-
     resultado = converterTemperatura(parametroConversao, temperatura);
+    
     if (resultado >= 0){
         printf("A temperatura convertida e: %.2f\n", resultado);
     }else{
         printf("parametro de conversao invalido.\n");
     }
+    }while(resultado != 7);
 }
 
 double horasParaMinutos (double horas) { return horas * 60; }
@@ -530,12 +544,14 @@ void conversorTempo() {
 double valor;
 int opcao;
 
+do{
 printf("Escolha 1 para converter horas em minutos.\n");
 printf("Escolha 2 para converter minutos em segundos.\n");
 printf("Escolha 3 para converter segundos em minutos.\n");
 printf("Escolha 4 para converter minutos em horas.\n");
 printf("Escolha 5 para converter horas em segundos.\n");
 printf("Escolha 6 para converter segundos em horas.\n");
+printf("Escolha 7 para Sair\n");
 scanf("%d", &opcao);
 
 switch(opcao) {
@@ -575,9 +591,20 @@ switch(opcao) {
     scanf("%lf", &valor);
     printf("%.2lf segundos = %.2lf horas\n", valor, segundosParaHoras(valor));
     break;
+
+    case 7: 
+    //Mensagem de saída e encerramento do programa
+    printf("Saindo...\n");
+    break;
+        
+    default: 
+    //Caso o usuário insira uma opção inválida
+    printf("Opcao invalida!\n\n");
        
     }
+    }while(opcao != 7);
 }
+
 
 void converterMsParaKmH(); //Função para converter m/s para km/h
 void converterKmhParaMs();  //Função para converter km/h para m/s
