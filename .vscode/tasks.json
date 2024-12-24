@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compilar e rodar",
+        "type": "shell",
+        "command": "gcc -o main main.c && ./main ; read -p 'Pressione Enter para sair...'",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [],
+        "detail": "Compilar e executar no terminal externo"
+      }
+    ]
+  }
+  
