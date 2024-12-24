@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void conversorArea();
 void conversorBits();
@@ -12,7 +13,7 @@ void conversorVelocidade();
 int main() {
     int escolha;
 
-    while (escolha !=0) {
+    while (escolha == 0) {
         printf("\n========== MENU ==========\n");
         printf("1. CONVERSOR AREA\n");
         printf("2. CONVERSOR BITS\n");
@@ -462,7 +463,7 @@ void conversorPotencia() {
             break;
         default:
             printf("Opção de entrada inválida!\n");
-            return 1;
+            return;
     }
 
     printf("\nResultado: %.2lf\n", valorConvertido);
@@ -517,14 +518,15 @@ void conversorTemperatura() {
     }
 }
 
+double horasParaMinutos (double horas) { return horas * 60; }
+double minutosParaSegundos (double minutos) { return minutos * 60; }
+double segundosParaMinutos (double segundos) { return segundos / 60; }
+double minutosParaHoras (double minutos) { return minutos / 60; }
+double horasParaSegundos (double horas) { return horas * 3600; }
+double segundosParaHoras (double segundos) { return segundos / 3600; }
+
 void conversorTempo() {
 
-double horasParaMinutos (double horas) { return horas * 60; };
-double minutosParaSegundos (double minutos) { return minutos * 60; };
-double segundosParaMinutos (double segundos) { return segundos / 60; };
-double minutosParaHoras (double minutos) { return minutos / 60; };
-double horasParaSegundos (double horas) { return horas * 3600; };
-double segundosParaHoras (double segundos) { return segundos / 3600; };
 double valor;
 int opcao;
 
