@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void conversorArea();
 void conversorBits();
@@ -12,7 +13,7 @@ void conversorVelocidade();
 int main() {
     int escolha;
 
-    while (escolha !=0) {
+    do {
         printf("\n========== MENU ==========\n");
         printf("1. CONVERSOR AREA\n");
         printf("2. CONVERSOR BITS\n");
@@ -61,56 +62,62 @@ int main() {
             default:
                 printf("\nOpcao invalida. Por favor, tente novamente.\n");
         }
-    }
+    } while (escolha != 0);
 
     return 0;
 }
 
+// CONVERSOR DE ÁREA
 void conversorArea() {
-    float valor, resultado;
-    char medida_atual[10], medida_convertida[10];   //para guardar as strings (cm2,m2,km2)
-    float fator_conversao = 1.0;                    //declara e inicia a variável                 
+    float valor, resultado1,resultado2;
+    int opcao;                //declaração das variáveis             
 
     
     //Interface com o usuário
-    printf("=== Conversor de Áreas ===\n");
-    printf("Unidades disponíveis: cm2, m2, km2\n");
+    printf("==== Conversor de Áreas ====\n\n");
+    printf("Unidades disponiveis: cm2, m2, km2\n");
     
-    printf("Digite o valor da área: ");
-    scanf("%f", &valor);
-    printf("Digite a unidade atual (cm2, m2, km2): ");
-    scanf("%s", medida_atual);
-    printf("Digite a unidade para conversão (cm2, m2, km2): ");
-    scanf("%s", medida_convertida);
+    printf("Digite a opção com a unidade de área atual\n\n");
+    printf("1 - cm2\n");
+    printf("2 - m2\n");
+    printf("3 - km2\n");
+    scanf("%d", &opcao);
 
-    // Determina o fator de conversão
-    if (strcmp(medida_atual, "cm2") == 0 && strcmp(medida_convertida, "m2") == 0) {
-        fator_conversao = 0.0001;
-    } else if (strcmp(medida_atual, "cm2") == 0 && strcmp(medida_convertida, "km2") == 0) {
-        fator_conversao = 0.00000001;
-    } else if (strcmp(medida_atual, "m2") == 0 && strcmp(medida_convertida, "cm2") == 0) {
-        fator_conversao = 10000.0;
-    } else if (strcmp(medida_atual, "m2") == 0 && strcmp(medida_convertida, "km2") == 0) {
-        fator_conversao = 0.000001;
-    } else if (strcmp(medida_atual, "km2") == 0 && strcmp(medida_convertida, "cm2") == 0) {
-        fator_conversao = 10000000000.0;
-    } else if (strcmp(medida_atual, "km2") == 0 && strcmp(medida_convertida, "m2") == 0) {
-        fator_conversao = 1000000.0;
-    } else if (strcmp(medida_atual, medida_convertida) == 0) {
-        fator_conversao = 1.0; // Sem conversão necessária
-    } else {
-        printf("Unidades inválidas ou não suportadas!\n");
-        return;
-    }
+    switch(opcao) {
+		case 1:	//atual é cm2
+		printf("Digite o valor da área\n");
+		scanf("%f",&valor);
+		resultado1 = valor * 0.0001;		//cm2 -> m2
+		resultado2 = valor * 0.0000000001;	// cm2 -> km2
+		printf("Os resultados da conversão para m2 e km2 são:\n");
+		printf("%.2f cm2 = %.4f m2 = %.10f km2\n",valor,resultado1,resultado2);
+		break;
 
-    // Calcula o resultado
-    resultado = valor * fator_conversao;
+		case 2:	//atual é m2
+		printf("Digite o valor da área\n");
+		scanf("%f",&valor);
+		resultado1 = valor * 10000;		//m2 -> cm2
+		resultado2 = valor * 0.000001;	//m2 -> km2
+		printf("Os resultados da conversão para cm2 e km2 são:\n");
+		printf("%.2f m2 = %.2f cm2 = %.6f km2\n",valor,resultado1,resultado2);
+		break;
 
-    // Exibe o resultado
-    printf("\n=== Resultado da Conversão ===\n");
-    printf("%.2f %s equivalem a %.8f %s\n", valor, medida_atual, resultado, medida_convertida);
-}
+		case 3:	//atual é km2
+		printf("Digite o valor da área\n");
+		scanf("%f",&valor);
+		resultado1 = valor * 10000000000;	//km2 -> cm2
+		resultado2 = valor * 1000000;		//km2 -> m2
+		printf("Os resultados da conversão para cm2 e m2 são:\n");
+		printf("%.2f km2 = %.2f cm2 = %.2f m2\n",valor,resultado1,resultado2);
+		break;
 
+		default: 
+		//usuário idigitou uma opção inválida
+		printf("Opcao inválida!\n\n");
+		}
+	}
+
+//CONVERSOR DE BITS
 void conversorBits(){
     int opcaoBase, opcaoConversao;
     float valor;
@@ -137,25 +144,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
                 resultado = valor;
                 break;
             case 2:
-                resultado = valor * 8;
+                resultado = valor / 8;
                 break;
             case 3:
-                resultado = valor * 8 * 1024;
+                resultado = valor / 8 / 1024;
                 break;
             case 4:
-                resultado = valor * 8 * 1024 * 1024;
+                resultado = valor / 8 / 1024 / 1024;
                 break;
             case 5:
-                resultado = valor * 8 * 1024 * 1024 * 1024;
+                resultado = valor / 8 / 1024 / 1024 / 1024;
                 break;
             case 6:
-                resultado = valor * 8 * 1024 * 1024 * 1024 * 1024;
+                resultado = valor / 8 / 1024 / 1024 / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -176,25 +184,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8;
+                resultado = valor * 8;
                 break;
             case 2:
                 resultado = valor;
                 break;
             case 3:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             case 4:
-                resultado = valor * 1024 * 1024;
+                resultado = valor / 1024 / 1024;
                 break;
             case 5:
-                resultado = valor * 1024 * 1024 * 1024;
+                resultado = valor / 1024 / 1024 / 1024;
                 break;
             case 6:
-                resultado = valor * 1024 * 1024 * 1024 * 1024;
+                resultado = valor / 1024 / 1024 / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -212,25 +221,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024;
+                resultado = valor * 8 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 3:
                 resultado = valor;
                 break;
             case 4:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             case 5:
-                resultado = valor * 1024 * 1024;
+                resultado = valor / 1024 / 1024;
                 break;
             case 6:
-                resultado = valor * 1024 * 1024 * 1024;
+                resultado = valor / 1024 / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -248,25 +258,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024 / 1024;
+                resultado = valor * 8 * 1024 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024 / 1024;
+                resultado = valor * 1024 * 1024;
                 break;
             case 3:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 4:
                 resultado = valor;
                 break;
             case 5:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             case 6:
-                resultado = valor * 1024 * 1024;
+                resultado = valor / 1024 / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -284,25 +295,26 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024 / 1024 / 1024;
+                resultado = valor * 8 * 1024 * 1024 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024 / 1024 / 1024;
+                resultado = valor * 1024 * 1024 * 1024;
                 break;
             case 3:
-                resultado = valor / 1024 / 1024;
+                resultado = valor * 1024 * 1024;
                 break;
             case 4:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 5:
                 resultado = valor;
                 break;
             case 6:
-                resultado = valor * 1024;
+                resultado = valor / 1024;
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -320,22 +332,23 @@ void conversorBits(){
         printf("5 - Gigabytes\n");
         printf("6 - Terabytes\n");
         scanf("%d", &opcaoConversao);
+        printf("Digite o valor a ser convertido:\n");
         scanf("%f", &valor);
         switch(opcaoConversao){
             case 1:
-                resultado = valor / 8 / 1024 / 1024 / 1024 / 1024;
+                resultado = valor * 8 * 1024 * 1024 * 1024 * 1024;
                 break;
             case 2:
-                resultado = valor / 1024 / 1024 / 1024 / 1024;
+                resultado = valor * 1024 * 1024 * 1024 * 1024;
                 break;
             case 3:
-                resultado = valor / 1024 / 1024 / 1024;
+                resultado = valor * 1024 * 1024 * 1024;
                 break;
             case 4:
-                resultado = valor / 1024 / 1024;
+                resultado = valor * 1024 * 1024;
                 break;
             case 5:
-                resultado = valor / 1024;
+                resultado = valor * 1024;
                 break;
             case 6:
                 resultado = valor;
@@ -347,26 +360,27 @@ void conversorBits(){
         break;
     }
     
-    printf("O valor convertido eh: %.2f\n", resultado);
+    printf("O valor convertido eh: %.4f\n", resultado);
 }
 
+//CONVERSOR DE MASSA
 void conversorMassa(){
     
     int op;
     double converter, resultado1, resultado2;
-    
+
     printf("Escolha a unidade de medida que deseja converter:\n");
     printf("1 - Grama\n");
     printf("2 - Quilograma\n");
     printf("3 - Tonelada\n");
     scanf("%d", &op);
 
-    printf("Digite o valor a ser convertido\n");
-    scanf("%lf", &converter);
-
+    
     switch(op){
 
     case 1: 
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     resultado1 = converter / 1000; // g -> kg
     resultado2 = converter / 1000000; // g -> T
     printf("O resultado convertido de grama para quilograma e tonelada eh:\n");
@@ -374,6 +388,8 @@ void conversorMassa(){
         break;
 
     case 2:
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     resultado1 = converter * 1000; // kg -> g
     resultado2 = converter / 1000; // kg -> T
     printf("O resultado convertido de quilograma para grama e tonelada eh:\n");
@@ -381,19 +397,21 @@ void conversorMassa(){
         break;
 
     case 3:
+    printf("Digite o valor a ser convertido\n");
+    scanf("%lf", &converter);
     resultado1 = converter * 1000; // T -> kg
     resultado2 = converter * 1000000; // T -> g
     printf("O resultado convertido de tonelada para quilograma e grama eh:\n");
     printf("| %.2lfT = %.2lfKg = %.2lfg | \n", converter, resultado1, resultado2);
         break;
 
-    default:
-    printf("Opcao invalida\n");
-        break;
+    default: 
+    //Caso o usuário insira uma opção inválida
+    printf("Opcao invalida!\n\n");
     }
-
 }
 
+//CONVERSOR DE POTÊNCIA
 void exibirMenu() {
     printf("1 - Watts (W)\n");
     printf("2 - Quilowatts (kW)\n");
@@ -437,17 +455,23 @@ void conversorPotencia() {
     int opcaoEntrada, opcaoSaida;
     double valorEntrada, valorConvertido;
 
-    printf("Bem-vindo ao Conversor de Potência!\n\n");
+    printf("Bem-vindo ao Conversor de Potencia!\n\n");
     exibirMenu();
     printf("Digite a unidade de entrada: ");
     scanf("%d", &opcaoEntrada);
+    if (opcaoEntrada < 1 || opcaoEntrada > 3)
+    {
+        printf("Opção de entrada invalida!\n");
+        return;
+    }
+    
 
     printf("Digite o valor: ");
     scanf("%lf", &valorEntrada);
 
-    printf("\nSelecione a unidade de saída:\n");
+    printf("\nSelecione a unidade de saida:\n");
     exibirMenu();
-    printf("Digite a unidade de saída: ");
+    printf("Digite a unidade de saida: ");
     scanf("%d", &opcaoSaida);
 
     switch (opcaoEntrada) {
@@ -461,13 +485,14 @@ void conversorPotencia() {
             valorConvertido = converterDeCavalosVapor(opcaoSaida, valorEntrada);
             break;
         default:
-            printf("Opção de entrada inválida!\n");
-            return 1;
+            printf("Opção de entrada invalida!\n");
+            return;
     }
 
     printf("\nResultado: %.2lf\n", valorConvertido);
 }
 
+//CONVERSOR DE TEMPERATURA
 float converterTemperatura(int medida, float temperatura){
 
 switch (medida){
@@ -489,8 +514,9 @@ switch (medida){
     case 6 : //Kelvin para Fahrenheit
         temperatura = (temperatura - 273.15) * 9/5 + 32;
     break;
-    default:
-        return 0;
+    default: 
+    //Caso o usuário insira uma opção inválida
+    printf("Opcao invalida!\n\n");
     }
 return temperatura;
 }
@@ -498,6 +524,7 @@ return temperatura;
 void conversorTemperatura() {
     int parametroConversao;
     float temperatura, resultado;
+
     printf("Determine os parametros de conversao:\n");
     printf("1 - Celsius para Fahrenheit\n");
     printf("2 - Celsius para Kelvin\n");
@@ -508,8 +535,8 @@ void conversorTemperatura() {
     scanf("%d", &parametroConversao);
     printf("Digite a temperatura:\n");
     scanf("%f", &temperatura);
-
     resultado = converterTemperatura(parametroConversao, temperatura);
+    
     if (resultado >= 0){
         printf("A temperatura convertida e: %.2f\n", resultado);
     }else{
@@ -517,14 +544,16 @@ void conversorTemperatura() {
     }
 }
 
+//CONVERSOR DE TEMPO
+double horasParaMinutos (double horas) { return horas * 60; }
+double minutosParaSegundos (double minutos) { return minutos * 60; }
+double segundosParaMinutos (double segundos) { return segundos / 60; }
+double minutosParaHoras (double minutos) { return minutos / 60; }
+double horasParaSegundos (double horas) { return horas * 3600; }
+double segundosParaHoras (double segundos) { return segundos / 3600; }
+
 void conversorTempo() {
 
-double horasParaMinutos (double horas) { return horas * 60; };
-double minutosParaSegundos (double minutos) { return minutos * 60; };
-double segundosParaMinutos (double segundos) { return segundos / 60; };
-double minutosParaHoras (double minutos) { return minutos / 60; };
-double horasParaSegundos (double horas) { return horas * 3600; };
-double segundosParaHoras (double segundos) { return segundos / 3600; };
 double valor;
 int opcao;
 
@@ -573,10 +602,15 @@ switch(opcao) {
     scanf("%lf", &valor);
     printf("%.2lf segundos = %.2lf horas\n", valor, segundosParaHoras(valor));
     break;
+        
+    default: 
+    //Caso o usuário insira uma opção inválida
+    printf("Opcao invalida!\n\n");
        
     }
 }
 
+//CONVERSOR DE VELOCIDADE
 void converterMsParaKmH(); //Função para converter m/s para km/h
 void converterKmhParaMs();  //Função para converter km/h para m/s
 void converterMsParaMph(); //Função para converter m/s para mph
@@ -587,8 +621,6 @@ void converterMphParaKmH(); //Função para converter mph para km/h
 void conversorVelocidade(){
     int opcao; //Variável que armazena a escolha do usuário no menu
 
-    //Laço para manter o menu ativo até que o usuário saia ou escolha uma opção válida
-    do{
     //Exibe o menu principal do programa
     printf("==== Conversor de Velocidade ====\n");
     printf("1 - Converter de m/s para km/h\n"); //Opção 1: Converter de m/s para km/h
@@ -597,7 +629,6 @@ void conversorVelocidade(){
     printf("4 - Converter de km/h para mph\n"); //Opção 4: Converter de km/h para mph
     printf("5 - Converter de mph para m/s\n");  //Opção 5: Converter de mph para m/s
     printf("6 - Converter de mph para km/h\n"); //Opção 6: Converter de mph para km/h
-    printf("7 - Sair\n"); //Opção 7: Sair do programa
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao); //Lê a opção escolhida pelo usuário
 
@@ -627,16 +658,11 @@ void conversorVelocidade(){
             //Chama a função para converter de mph para km/h
             converterMphParaKmH();
             break;
-        case 7: 
-            //Mensagem de saída e encerramento do programa
-            printf("Saindo...\n");
-            break;
         default: 
             //Caso o usuário insira uma opção inválida
             printf("Opcao invalida!\n\n");
 
     }
-    }while(opcao!=7);   //Repete até o usuário escolher a opção 7 (Sair)
 }
 
 //Função para converter de metros por segundo (m/s) para quilômetros por hora (km/h)
