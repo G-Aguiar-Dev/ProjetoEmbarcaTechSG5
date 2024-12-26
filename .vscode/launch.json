@@ -1,24 +1,31 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/rian_/Nova pasta (2)/ProjetoEmbarcaTechSG5",
-      "program": "c:/Users/rian_/Nova pasta (2)/ProjetoEmbarcaTechSG5/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    }
+      {
+          "name": "Debug C++",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/main.exe",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": true,
+          "MIMode": "gdb",
+          "setupCommands": [
+              {
+                  "description": "Ativar formatação de impressão para gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+              }
+          ],
+          "preLaunchTask": "Compilar C",
+          "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
+          "logging": {
+              "engineLogging": true
+          },
+          "internalConsoleOptions": "neverOpen",
+          "launchCompleteCommand": "exec-run"
+      }
   ]
 }

@@ -2,12 +2,42 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Compilar e rodar",
+            "label": "Compilar C",
             "type": "shell",
-            "command": "gcc -o main main.c && ./main ; read -p 'Pressione Enter para sair...'",
+            "command": "gcc",
+            "args": [
+                "*.c",
+                "-o",
+                "main"
+            ],
             "group": "build",
-            "problemMatcher": [],
-            "detail": "Compilar e executar no terminal externo"
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Tarefa gerada pela configuração do usuário"
+        },
+        {
+            "label": "Executar Programa",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/c",
+                "start",
+                "cmd.exe",
+                "/k",
+                "main"
+            ],
+            "dependsOn": "Compilar C",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
         },
         {
             "type": "cppbuild",
