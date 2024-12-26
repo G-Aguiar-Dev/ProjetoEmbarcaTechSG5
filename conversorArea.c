@@ -1,57 +1,63 @@
-//Função Conversor de Áreas
-/* 
-Esta função obteḿ do usuário: a) o valor da área; b) a medida atual (cm2,m2 ou km2);
-c) para qual medida deseja converter.
-Com essas entradas a função faz uma comparação de strings para determinar qual cálculo
-de conversão deverá ser feito. A saída mostra a área na medida atual e a área na medida
-convertida.
-*/
+/* Projeto Embarcatech de Conversão
+ * --------------------------------
+ * Função para conversão de área
+ * Antonio H. F. Louro 
+ * Grupo 2
+ * SubGrupo 5
+ * --------------------------------
+ * Esta função obtém do usuário o valor e a unidade de área atuais
+ * e os onverte para as outras duas unidades de área disponíveis.
+ * As unidades de área utilizadas são: cm2, m2 e km2
+ */
 
 
 #include <stdio.h>
-#include <string.h>
 
-void converterArea() {
-    float valor, resultado;
-    char medida_atual[10], medida_convertida[10];   //para guardar as strings (cm2,m2,km2)
-    float fator_conversao = 1.0;                    //declara e inicia a variável                 
+void conversorArea() {
+    float valor, resultado1,resultado2;
+    int opcao;              
 
     
     //Interface com o usuário
-    printf("=== Conversor de Áreas ===\n");
-    printf("Unidades disponíveis: cm2, m2, km2\n");
+    printf("==== Conversor de Áreas ====\n\n");
     
-    printf("Digite o valor da área: ");
-    scanf("%f", &valor);
-    printf("Digite a unidade atual (cm2, m2, km2): ");
-    scanf("%s", medida_atual);
-    printf("Digite a unidade para conversão (cm2, m2, km2): ");
-    scanf("%s", medida_convertida);
-
-    // Determina o fator de conversão
-    if (strcmp(medida_atual, "cm2") == 0 && strcmp(medida_convertida, "m2") == 0) {
-        fator_conversao = 0.0001;
-    } else if (strcmp(medida_atual, "cm2") == 0 && strcmp(medida_convertida, "km2") == 0) {
-        fator_conversao = 0.00000001;
-    } else if (strcmp(medida_atual, "m2") == 0 && strcmp(medida_convertida, "cm2") == 0) {
-        fator_conversao = 10000.0;
-    } else if (strcmp(medida_atual, "m2") == 0 && strcmp(medida_convertida, "km2") == 0) {
-        fator_conversao = 0.000001;
-    } else if (strcmp(medida_atual, "km2") == 0 && strcmp(medida_convertida, "cm2") == 0) {
-        fator_conversao = 10000000000.0;
-    } else if (strcmp(medida_atual, "km2") == 0 && strcmp(medida_convertida, "m2") == 0) {
-        fator_conversao = 1000000.0;
-    } else if (strcmp(medida_atual, medida_convertida) == 0) {
-        fator_conversao = 1.0; // Sem conversão necessária
-    } else {
-        printf("Unidades inválidas ou não suportadas!\n");
-        return;
-    }
-
-    // Calcula o resultado
-    resultado = valor * fator_conversao;
-
-    // Exibe o resultado
-    printf("\n=== Resultado da Conversão ===\n");
-    printf("%.2f %s equivalem a %.8f %s\n", valor, medida_atual, resultado, medida_convertida);
-}
+    
+    printf("Digite a opção com a unidade de área atual\n\n");
+    printf("1 - cm2\n");
+    printf("2 - m2\n");
+    printf("3 - km2\n");
+    scanf("%d", &opcao);
+    
+    switch(opcao) {
+		case 1:	//atual é cm2
+		printf("Digite o valor da área\n");
+		scanf("%f",&valor);
+		resultado1 = valor * 0.0001;		//cm2 -> m2
+		resultado2 = valor * 0.0000000001;	// cm2 -> km2
+		printf("Os resultados da conversão para m2 e km2 são:\n");
+		printf("%.2f cm2 = %.4f m2 = %.10f km2\n",valor,resultado1,resultado2);
+		break;
+		
+		case 2:	//atual é m2
+		printf("Digite o valor da área\n");
+		scanf("%f",&valor);
+		resultado1 = valor * 10000;		//m2 -> cm2
+		resultado2 = valor * 0.000001;	//m2 -> km2
+		printf("Os resultados da conversão para cm2 e km2 são:\n");
+		printf("%.2f m2 = %.2f cm2 = %.6f km2\n",valor,resultado1,resultado2);
+		break;
+		
+		case 3:	//atual é km2
+		printf("Digite o valor da área\n");
+		scanf("%f",&valor);
+		resultado1 = valor * 10000000000;	//km2 -> cm2
+		resultado2 = valor * 1000000;		//km2 -> m2
+		printf("Os resultados da conversão para cm2 e m2 são:\n");
+		printf("%.2f km2 = %.2f cm2 = %.2f m2\n",valor,resultado1,resultado2);
+		break;
+    
+		default: 
+		//usuário idigitou uma opção inválida
+		printf("Opcao inválida!\n\n");
+		}
+	}
