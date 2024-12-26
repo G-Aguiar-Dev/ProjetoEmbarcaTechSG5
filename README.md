@@ -3,9 +3,9 @@ Projeto em grupo com foco em desenvolver habilidades com git e Github. Baseia-se
 
 # Instruções
 
-<h3>As seguintes instruções se baseiam na situação em que o usuário está no diretório do programa</h3>
-<h3>Caso seja necessário, adapte os comandos ao caminho no qual depositou o repositório<h3>
-
+As seguintes instruções se baseiam na situação em que o usuário está no diretório do programa.<br>
+Caso seja necessário, adapte os comandos ao caminho no qual depositou o repositório.<br>
+<br>
 O programa já acompanha um arquivo main.exe pré executado, realize os seguintes passos em caso de alteração:<br>
 <br>
 Execute o seguinte comando para gerar um arquivo main.exe:<br>
